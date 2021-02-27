@@ -26,9 +26,9 @@
         <property name="show_sql">true</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
 
-        <mapping class="pl.edu.wszib.model.UserAdmin"/>
-        <mapping class="pl.edu.wszib.model.User"/>
-        <mapping class="pl.edu.wszib.model.Package"/>
+        <mapping class="pl.edu.wszib.przesylki.model.UserAdmin"/>
+        <mapping class="pl.edu.wszib.przesylki.model.User"/>
+        <mapping class="pl.edu.wszib.przesylki.model.Package"/>
 
     </session-factory>
 </hibernate-configuration>
