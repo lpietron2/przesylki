@@ -37,13 +37,13 @@ public class CommonController {
         return "/main";
     }
 
-    @RequestMapping(value = "/main", method = RequestMethod.POST)
+    /*@RequestMapping(value = "/main", method = RequestMethod.POST)
     public String main(){
 
 
 
         return "redirect:/showpackage/{code}";
-    }
+    }*/
 
     @RequestMapping(value = "/showpackage/{code}", method = RequestMethod.GET)
     public String showPackageForm(@PathVariable String code, Model model){

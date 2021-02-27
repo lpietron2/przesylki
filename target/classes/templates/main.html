@@ -1,10 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--suppress ThymeleafVariablesResolveInspection -->
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Monitorawanie przesylek</title>
 </head>
 <body>
-aaaaaaah
+<div class="code-box">
+    <div id="code-text">Wpisz kod:</div>
+    <form method="post">
+        <input placeholder="Unikalny kod" type="text" th:field="*{code}">
+<!--        <input type="submit" value="Szukaj">-->
+<!--        <a id="submit-button" th:href="@{/showpackage/{code}(code=${packages.code})}">Szukaj</a>-->
+    </form>
+
+</div>
+
 </body>
 </html>
