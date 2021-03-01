@@ -7,9 +7,12 @@
     <title>Paczka</title>
 </head>
 <body>
-<div>
-aaaaaaaaa
+<div class="info-package">
+    <div th:text="'Status: ' + ${packages.status}"></div>
+    <div th:text="'Nadawca: ' + ${userFrom}"></div>
+    <div th:text="'Odbiorca: ' + ${userTo}"></div>
+    <div th:text="'Data: ' + ${packages.date}"></div>
+    <div th:text="'Unikalny kod: ' + ${packages.code}"></div>
 </div>
-
 </body>
 </html>

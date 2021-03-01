@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<!--suppress ThymeleafVariablesResolveInspection -->
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<div>
+    <input type="text" placeholder="login" th:field="*{user.login}">
+    <input type="password" placeholder="haslo" th:fiedl="*{user.pass}">
+    <input type="submit" value="Zaloguj">
+</div>
+</body>
+</html>

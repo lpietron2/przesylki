@@ -85,4 +85,16 @@ public class Package {
         W_DORECZENIU,
         DORECZONY
     }
+
+    @Override
+    public String toString() {
+        return "Package{" +
+                "id=" + id +
+                ", sendFrom=" + sendFrom +
+                ", sendTo=" + sendTo +
+                ", date='" + date + '\'' +
+                ", status=" + status +
+                ", code='" + code + '\'' +
+                '}';
+    }
 }

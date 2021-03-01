@@ -67,7 +67,7 @@ public class AdminController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginForm(Model model){
-        if(!this.sessionObject.isLogged()){
+        if(this.sessionObject.isLogged()){
             return "redirect:/main";
         }
 
@@ -103,7 +103,7 @@ public class AdminController {
     //TODO controller do wyszukiwania dla adminow
     @RequestMapping(value = "/findPackage", method = RequestMethod.GET)
     public String findPackageForm(Model model){
-        if(!this.sessionObject.isLogged()){
+        if(this.sessionObject.isLogged()){
             return "redirect:/main";
         }
         //TODO hmmm?
