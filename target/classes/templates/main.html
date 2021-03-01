@@ -10,9 +10,8 @@
 <div class="code-box">
     <div id="code-text">Wpisz kod:</div>
     <form method="post">
-        <input placeholder="Unikalny kod" type="text" th:field="*{code}">
-<!--        <input type="submit" value="Szukaj">-->
-<!--        <a id="submit-button" th:href="@{/showpackage/{code}(code=${packages.code})}">Szukaj</a>-->
+        <input placeholder="Unikalny kod" type="text" th:field="*{packages.code}">   <!--     ${} wyswietlic, *{} powiazac-->
+        <a id="submit-button" th:href="@{/showpackage/{code}(code=${packages.code})}">Szukaj</a>
     </form>
 
 </div>

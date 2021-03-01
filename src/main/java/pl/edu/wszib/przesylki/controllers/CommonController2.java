@@ -1,4 +1,3 @@
-/*
 package pl.edu.wszib.przesylki.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @Controller
-public class CommonController {
+public class CommonController2 {
     @Autowired
     IPackageService packageService;
 
@@ -51,24 +50,19 @@ public class CommonController {
         return "/showpackage/{code}";
     }
 
-  */
-/*  @RequestMapping(value = "/showpackage", method = RequestMethod.GET)
+  /*  @RequestMapping(value = "/showpackage", method = RequestMethod.GET)
     public String showPackageLandingPage(){
         return "redirect:/main";
-    }*//*
+    }*/
 
-
-   */
-/* @RequestMapping(value = "/showpackage/{id}", method = RequestMethod.POST)
+   /* @RequestMapping(value = "/showpackage/{id}", method = RequestMethod.POST)
     public String packageShow(@ModelAttribute Package packages){
         if(!this.sessionObject.isLogged()){
             return "redirect:/main";
         }
         this.packageService.updatePackageInfo(packages);
         return "redirect:/showpackage";
-    }*//*
-
+    }*/
 
 
 }
-*/

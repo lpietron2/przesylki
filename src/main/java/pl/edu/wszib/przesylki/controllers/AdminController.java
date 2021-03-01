@@ -5,8 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import pl.edu.wszib.przesylki.model.User;
+import pl.edu.wszib.przesylki.model.UserAdmin;
 import pl.edu.wszib.przesylki.services.IPackageService;
 import pl.edu.wszib.przesylki.model.Package;
+import pl.edu.wszib.przesylki.services.IUserAdminService;
 import pl.edu.wszib.przesylki.session.SessionObject;
 
 
@@ -20,14 +23,8 @@ public class AdminController {
     @Autowired
     IPackageService packageService;
 
-   /* @RequestMapping(value = "/showpackage/{id}", method = RequestMethod.POST)
-    public String packageShow(@ModelAttribute Package packages){
-        if(!this.sessionObject.isLogged()){
-            return "redirect:/main";
-        }
-        this.packageService.updatePackageInfo(packages);
-        return "redirect:/showpackage";
-    }*/
+    @Autowired
+    IUserAdminService userAdminService;
 
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
@@ -66,6 +63,42 @@ public class AdminController {
         this.packageService.addPackage(packages);
         return "redirect:/showpackage/{id}";
     }
+
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String loginForm(Model model){
+        if(!this.sessionObject.isLogged()){
+            return "redirect:/main";
+        }
+
+        model.addAttribute("isLogged", this.sessionObject.isLogged());
+        model.addAttribute("user", new UserAdmin());
+
+        return "/login";
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String login(@ModelAttribute UserAdmin userAdmin){
+
+        if(this.userAdminService.authenticate(userAdmin)){
+            return "redirect:/main";
+        }
+
+        return "redirect:/login";
+    }
+
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logout(){
+        this.userAdminService.logout();
+        return "redirect:/login";
+    }
+
+
+
+
+
+
+
 
     //TODO controller do wyszukiwania dla adminow
     @RequestMapping(value = "/findPackage", method = RequestMethod.GET)

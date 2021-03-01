@@ -21,10 +21,12 @@ public class HibernatePackageDAOImpl implements IHibernatePackageDAO {
     @Override
     public List<Package> getAllPackages() {
         Session session = this.sessionFactory.openSession();
+        Query<Package> query = session.createQuery("FROM pl.edu.wszib.przesylki.model.Package");
+
+        List<Package> result = query.getResultList();
+
         session.close();
-
-
-        return null;
+        return result;
     }
 
     @Override
