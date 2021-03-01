@@ -35,13 +35,13 @@ public class CommonController2 {
         return "/main";
     }
 
-    @RequestMapping(value = "/main", method = RequestMethod.POST)
+ /*   @RequestMapping(value = "/main", method = RequestMethod.POST)
     public String main(@ModelAttribute String code){
         this.packageService.getPackageByCode(code);
 
         return "redirect:/showpackage/{code}";
     }
-
+*/
     @RequestMapping(value = "/showpackage/{code}", method = RequestMethod.GET)
     public String showPackageForm(@PathVariable String code, Model model){
         Package packages = this.packageService.getPackageByCode(code);
