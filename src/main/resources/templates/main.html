@@ -5,14 +5,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Monitorawanie przesylek</title>
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/commons.css">
 </head>
 <body>
-<div class="code-box">
+
+<div th:replace="fragments.html :: logo"></div>
+<div th:replace="fragments.html :: menu"></div>
+
+<div class="box-form">
     <div id="code-text">Wpisz kod:</div>
     <form method="post">
         <input placeholder="Unikalny kod" type="text" th:field="*{packages.code}">   <!--     ${} wyswietlic, *{} powiazac-->
         <input type="submit" value="Szukaj">
-        <!--        <a id="submit-button" th:href="@{/showpackage/{code}(code=${packages.code})}">Szukaj</a>-->
     </form>
 
 </div>

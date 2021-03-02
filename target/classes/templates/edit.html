@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<!--suppress ThymeleafVariablesResolveInspection -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edytowanie</title>
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/commons.css">
+</head>
+<body>
+<div th:replace="fragments.html :: logo"></div>
+<div th:replace="fragments.html :: menu"></div>
+
+<div class="edit-package">
+    <input type="text" placeholder="${packages.status}" th:field="*{packages.status}">
+    <input type="text" placeholder="${packages.userFrom}" th:field="*{packages.userFrom}" disabled>
+    <input type="text" placeholder="${packages.userTo}" th:field="*{packages.userTo}" disabled>
+    <input type="text" placeholder="${packages.date}" th:field="*{packages.date}" disabled>
+    <input type="text" placeholder="${packages.code}" th:field="*{packages.code}" disabled>
+    <input type="submit" value="Zapisz">
+</div>
+</body>
+</html>

@@ -43,7 +43,7 @@ public class CommonController {
     @RequestMapping(value = "/main", method = RequestMethod.POST)
     public String main(@ModelAttribute Package packages){
         this.packageService.getPackageByCode(packages.getCode());
-        return "redirect:/showpackage/"+packages.getCode();
+        return "redirect:/showpackage/" + packages.getCode();
     }
 
     @RequestMapping(value = "/showpackage/{code}", method = RequestMethod.GET)

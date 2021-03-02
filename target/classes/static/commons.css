@@ -1,0 +1,44 @@
+body{
+    background-color: antiquewhite;
+}
+#logo{
+    width: 250px;
+    margin: -35px auto;
+    display: block;
+}
+#menu{
+    margin: 50px auto;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    font-size: 40px;
+}
+.logout-button{
+    text-font: 25px;
+}
+
+.box-form{
+    width: 400px;
+    margin: 70px auto;
+}
+.box-form input[type="text"]{
+    width: 80%;
+    margin: 10px auto;
+    font-size: 18px;
+    display: block;
+    text-align: center;
+}
+.box-form input[type="password"]{
+    width: 80%;
+    margin: 10px auto;
+    font-size: 18px;
+    display: block;
+    text-align: center;
+}
+.box-form input[type="submit"]{
+    width: 80%;
+    margin: 10px auto;
+    font-size: 18px;
+    display: block;
+    text-align: center;
+}

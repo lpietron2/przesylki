@@ -18,11 +18,16 @@ public class UserAdminServiceImpl implements IUserAdminService {
     IHibernateUserAdminDAO hibernateUserAdminDAO;
 
     @Override
-    public boolean authenticate(UserAdmin userAdmin) {
-        UserAdmin user = this.hibernateUserAdminDAO.getUserAdminByLogin(userAdmin.getLogin());
+    public void authenticate(UserAdmin userAdmin) {
+        UserAdmin userFromDB = this.hibernateUserAdminDAO.getUserAdminByLogin(userAdmin.getLogin());
+        if(userFromDB == null){
+            return;
+        }
 
+        if(userFromDB.getPass().equals(userAdmin.getPass())){
+            this.sessionObject.setLoggedUser(userFromDB);
+        }
 
-        return false;
     }
 
     @Override

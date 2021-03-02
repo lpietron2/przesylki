@@ -45,4 +45,13 @@ public class UserAdmin {
     public void setPass(String pass) {
         this.pass = pass;
     }
+
+    @Override
+    public String toString() {
+        return "UserAdmin{" +
+                "id=" + id +
+                ", login='" + login + '\'' +
+                ", pass='" + pass + '\'' +
+                '}';
+    }
 }

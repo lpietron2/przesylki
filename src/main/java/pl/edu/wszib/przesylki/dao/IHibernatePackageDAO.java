@@ -8,4 +8,5 @@ public interface IHibernatePackageDAO {
     List<Package> getAllPackages();
     Package getPackageById(int id);
     Package getPackageByCode(String code);
+    void editPackage(Package packages);
 }

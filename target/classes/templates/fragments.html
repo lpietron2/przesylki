@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--suppress ThymeleafVariablesResolveInspection -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 
+<img src="logo.png" id="logo" th:fragment="logo">
+
+<div id="menu" th:fragment="menu">
+    <a href="/main">Strona Glowna</a>
+    <a href="/logout" th:if="${isLogged}" class="logout-button">Wyloguj</a>
+</div>
 </body>
 </html>

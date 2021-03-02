@@ -1,0 +1,36 @@
+.info-package{
+    font-size: 20px;
+    text-align: center;
+    display: block;
+}
+.from-box{
+    margin: 10px auto;
+}
+.to-box{
+    margin: 10px auto;
+}
+.from-text{
+    font-weight: bold;
+}
+.to-text{
+    font-weight: bold;
+}
+
+.add-icon{
+    background-image: url("addIcon.png");
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    background-size: contain;
+    margin-bottom: 50px;
+
+}
+.edit-icon{
+    background-image: url("editIcon.png");
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    background-size: contain;
+    margin-bottom: 50px;
+
+}

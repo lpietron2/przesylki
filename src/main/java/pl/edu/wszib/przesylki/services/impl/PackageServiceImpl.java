@@ -31,8 +31,8 @@ public class PackageServiceImpl implements IPackageService {
     }
 
     @Override
-    public Package updatePackageInfo(Package packages) {
-        return null;
+    public void editPackageInfo(Package packages) {
+        this.hibernatePackageDAO.editPackage(packages);
     }
 
     @Override

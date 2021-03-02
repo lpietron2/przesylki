@@ -16,11 +16,11 @@ public class User {
     private String phone;
 
 
-    public User(int id, String name, String lastName, String adress, String phone) {
+    public User(int id, String name, String lastName, String address, String phone) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
-        this.address = adress;
+        this.address = address;
         this.phone = phone;
     }
 

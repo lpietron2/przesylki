@@ -9,6 +9,6 @@ public interface IPackageService {
     List<Package> getAllPackages();
     Package getPackageById(int id);
     Package getPackageByCode(String code);
-    Package updatePackageInfo(Package packages);
+    void editPackageInfo(Package packages);
     Package addPackage(Package packages);
 }

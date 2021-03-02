@@ -29,9 +29,13 @@ public class AdminController {
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public String editForm(@PathVariable int id, Model model){
+        if(!this.sessionObject.isLogged()){
+            return "redirect:/main";
+        }
         Package packages = this.packageService.getPackageById(id);
         model.addAttribute("packages", packages);
         model.addAttribute("isLogged", this.sessionObject.isLogged());
+
         return "/edit";
     }
 
@@ -40,8 +44,9 @@ public class AdminController {
         if(!this.sessionObject.isLogged()){
             return "redirect:/main";
         }
-        this.packageService.updatePackageInfo(packages);
-        return "redirect:/showpackage/{id}";
+
+        this.packageService.editPackageInfo(packages);
+        return "redirect:/showpackage/" + packages.getId();
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
@@ -55,7 +60,7 @@ public class AdminController {
         return "/add";
     }
 
-    @RequestMapping(value = "add", method = RequestMethod.POST)
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String add(@ModelAttribute Package packages){
         if(!this.sessionObject.isLogged()){
             return "redirect:/main";
@@ -74,13 +79,13 @@ public class AdminController {
         model.addAttribute("isLogged", this.sessionObject.isLogged());
         model.addAttribute("user", new UserAdmin());
 
-        return "/login";
+        return "login";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(@ModelAttribute UserAdmin userAdmin){
-
-        if(this.userAdminService.authenticate(userAdmin)){
+        this.userAdminService.authenticate(userAdmin);
+        if(this.sessionObject.isLogged()){
             return "redirect:/main";
         }
 
