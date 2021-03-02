@@ -21,8 +21,7 @@ public class PackageServiceImpl implements IPackageService {
 
     @Override
     public Package getPackageById(int id) {
-        this.hibernatePackageDAO.getPackageById(id);
-        return null;
+        return this.hibernatePackageDAO.getPackageById(id);
     }
 
     @Override
