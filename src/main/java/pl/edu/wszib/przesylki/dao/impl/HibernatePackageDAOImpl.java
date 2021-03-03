@@ -77,4 +77,22 @@ public class HibernatePackageDAOImpl implements IHibernatePackageDAO {
             session.close();
         }
     }
+
+
+    @Override
+    public void addPackage(Package packages) {
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();
+            session.save(packages);
+            tx.commit();
+        }catch(Exception e){
+            if(tx != null){
+                tx.rollback();
+            }
+        }finally {
+            session.close();
+        }
+    }
 }

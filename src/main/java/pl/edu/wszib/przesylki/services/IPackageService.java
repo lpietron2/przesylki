@@ -10,5 +10,5 @@ public interface IPackageService {
     Package getPackageById(int id);
     Package getPackageByCode(String code);
     void editPackageInfo(Package packages);
-    Package addPackage(Package packages);
+    void addPackage(Package packages);
 }

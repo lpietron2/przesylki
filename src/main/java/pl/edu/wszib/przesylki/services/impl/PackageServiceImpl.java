@@ -7,7 +7,7 @@ import pl.edu.wszib.przesylki.model.Package;
 import pl.edu.wszib.przesylki.services.IPackageService;
 
 import java.util.List;
-//TODO napisac servisy i dao do tego
+
 @Service
 public class PackageServiceImpl implements IPackageService {
     @Autowired
@@ -15,8 +15,7 @@ public class PackageServiceImpl implements IPackageService {
 
     @Override
     public List<Package> getAllPackages() {
-        this.hibernatePackageDAO.getAllPackages();
-        return null;
+        return this.hibernatePackageDAO.getAllPackages();
     }
 
     @Override
@@ -35,8 +34,9 @@ public class PackageServiceImpl implements IPackageService {
     }
 
     @Override
-    public Package addPackage(Package packages) {
-        return null;
+    public void addPackage(Package packages) {
+        this.hibernatePackageDAO.addPackage(packages);
     }
+
 
 }

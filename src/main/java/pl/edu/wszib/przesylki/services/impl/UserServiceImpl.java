@@ -6,6 +6,8 @@ import pl.edu.wszib.przesylki.dao.IHibernateUserDAO;
 import pl.edu.wszib.przesylki.model.User;
 import pl.edu.wszib.przesylki.services.IUserService;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements IUserService {
 
@@ -15,5 +17,26 @@ public class UserServiceImpl implements IUserService {
     @Override
     public User getUserById(int id) {
         return this.hibernateUserDAO.getUserById(id);
+    }
+
+    @Override
+    public void addNewUser(User user) {
+        this.hibernateUserDAO.persistUser(user);
+    }
+
+    @Override
+    public boolean isUserInDB(User user) {
+        List<User> userList = this.hibernateUserDAO.getUserByAddress(user.getAdress());
+        if(userList == null){
+            this.hibernateUserDAO.persistUser(user);
+            return false;
+        }
+        for(User currentUser : userList){
+            if(currentUser.equals(user)){
+                return true;
+            }
+        }
+        this.hibernateUserDAO.persistUser(user);
+        return false;
     }
 }

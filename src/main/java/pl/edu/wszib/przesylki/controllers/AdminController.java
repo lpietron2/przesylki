@@ -44,9 +44,9 @@ public class AdminController {
         if(!this.sessionObject.isLogged()){
             return "redirect:/main";
         }
-
+        System.out.println(packages.toString());
         this.packageService.editPackageInfo(packages);
-        return "redirect:/showpackage/" + packages.getId();
+        return "redirect:/showpackage/" + packages.getCode();
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
@@ -54,8 +54,9 @@ public class AdminController {
         if(!this.sessionObject.isLogged()){
             return "redirect:/main";
         }
-
         model.addAttribute("packages", new Package());
+        model.addAttribute("userFrom", new User());
+        model.addAttribute("userTo", new User());
         model.addAttribute("isLogged", this.sessionObject.isLogged());
         return "/add";
     }
@@ -66,7 +67,7 @@ public class AdminController {
             return "redirect:/main";
         }
         this.packageService.addPackage(packages);
-        return "redirect:/showpackage/{id}";
+        return "redirect:/showpackage/" + packages.getCode();
     }
 
 
