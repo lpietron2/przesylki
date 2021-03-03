@@ -25,18 +25,15 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public boolean isUserInDB(User user) {
-        List<User> userList = this.hibernateUserDAO.getUserByAddress(user.getAdress());
+    public void isUserInDB(User user) {
+        List<User> userList = this.hibernateUserDAO.getUserByAddress(user.getAddress());
         if(userList == null){
             this.hibernateUserDAO.persistUser(user);
-            return false;
         }
         for(User currentUser : userList){
             if(currentUser.equals(user)){
-                return true;
             }
         }
         this.hibernateUserDAO.persistUser(user);
-        return false;
     }
 }

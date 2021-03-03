@@ -33,6 +33,7 @@ public class AdminController {
             return "redirect:/main";
         }
         Package packages = this.packageService.getPackageById(id);
+
         model.addAttribute("packages", packages);
         model.addAttribute("isLogged", this.sessionObject.isLogged());
 
@@ -45,8 +46,11 @@ public class AdminController {
             return "redirect:/main";
         }
         System.out.println(packages.toString());
-        this.packageService.editPackageInfo(packages);
-        return "redirect:/showpackage/" + packages.getCode();
+        Package packagesNew = this.packageService.getPackageById(packages.getId());
+        packagesNew.setStatus(packages.getStatus());
+
+        this.packageService.editPackageInfo(packagesNew);
+        return "redirect:/showpackage/" + packagesNew.getCode();
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
@@ -62,14 +66,13 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String add(@ModelAttribute Package packages){
+    public String add(@ModelAttribute Package packages, @ModelAttribute User userFrom, @ModelAttribute User userTo){
         if(!this.sessionObject.isLogged()){
             return "redirect:/main";
         }
-        this.packageService.addPackage(packages);
+        this.packageService.addPackage(packages, userFrom, userTo);
         return "redirect:/showpackage/" + packages.getCode();
     }
-
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginForm(Model model){

@@ -35,6 +35,7 @@ public class CommonController {
     @RequestMapping(value = "/main", method = RequestMethod.GET)
     public String mainForm(Model model){
         Package packages = new Package();
+        this.packageService.codeGenerate();
         model.addAttribute("packages", packages);
         model.addAttribute("isLogged", this.sessionObject.isLogged());
         return "/main";
