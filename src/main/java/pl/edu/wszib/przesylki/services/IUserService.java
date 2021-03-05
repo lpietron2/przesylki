@@ -6,4 +6,5 @@ public interface IUserService {
     User getUserById(int id);
     void addNewUser(User user);
     void isUserInDB(User user);
+    User isUserInDBByName(User user);
 }

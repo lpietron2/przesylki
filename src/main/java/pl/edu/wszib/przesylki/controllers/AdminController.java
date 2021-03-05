@@ -60,19 +60,50 @@ public class AdminController {
         }
         model.addAttribute("packages", new Package());
         model.addAttribute("userFrom", new User());
-        model.addAttribute("userTo", new User());
         model.addAttribute("isLogged", this.sessionObject.isLogged());
         return "/add";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String add(@ModelAttribute Package packages, @ModelAttribute User userFrom, @ModelAttribute User userTo){
+    public String add(@ModelAttribute Package packages, @ModelAttribute User userFrom){
         if(!this.sessionObject.isLogged()){
             return "redirect:/main";
         }
-        this.packageService.addPackage(packages, userFrom, userTo);
-        return "redirect:/showpackage/" + packages.getCode();
+
+        System.out.println("userFrom: " + userFrom);
+        this.packageService.addPackage(packages);
+        System.out.println("packege w add1 post: " + packages);
+
+        return "redirect:/addUserTo/" + packages.getId();
     }
+
+
+    @RequestMapping(value = "/addUserTo/{id}", method = RequestMethod.GET)
+    public String add2From(@PathVariable int id, Model model){
+        if(!this.sessionObject.isLogged()){
+            return "redirect:/main";
+        }
+        Package packages = this.packageService.getPackageById(id);
+        System.out.println("paczka z add2 get: " + packages);
+        model.addAttribute("packages", packages);
+        model.addAttribute("userTo", new User());
+        model.addAttribute("isLogged", this.sessionObject.isLogged());
+        return "/addUserTo";
+    }
+
+    @RequestMapping(value = "/addUserTo/{id}", method = RequestMethod.POST)
+    public String add2(@ModelAttribute Package packages, @ModelAttribute User userTo){
+        if(!this.sessionObject.isLogged()){
+            return "redirect:/main";
+        }
+
+        System.out.println("Paczka z 2 add: " + packages.toString());
+        System.out.println("userTo: " + userTo.toString());
+
+        //this.packageService.addPackage(packages, userFrom, userTo);
+        return "redirect:/main";
+    }
+
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginForm(Model model){
@@ -101,26 +132,4 @@ public class AdminController {
         this.userAdminService.logout();
         return "redirect:/login";
     }
-
-
-
-
-
-
-
-
-    //TODO controller do wyszukiwania dla adminow
-    @RequestMapping(value = "/findPackage", method = RequestMethod.GET)
-    public String findPackageForm(Model model){
-        if(this.sessionObject.isLogged()){
-            return "redirect:/main";
-        }
-        //TODO hmmm?
-        //Package packages = this.packageService.getPackageById();
-        //model.addAttribute("packages", packages);
-        model.addAttribute("isLogged", this.sessionObject.isLogged());
-
-        return "/findPackage";
-    }
-
 }

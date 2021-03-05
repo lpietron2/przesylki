@@ -16,13 +16,13 @@
     <div class="from-box">
         <div class="from-text">Nadawca: </div>
         <div th:text="${userFrom.name} + ' ' + ${userFrom.lastName}"></div>
-<!--        <div th:text="${userFrom.address}"></div>-->
+        <div th:text="${userFrom.address}"></div>
         <div th:text="'Nr tel. ' + ${userFrom.phone}"></div>
     </div>
     <div class="to-box">
         <div class="to-text">Odbiorca: </div>
         <div th:text="${userTo.name} + ' ' + ${userTo.lastName}"></div>
-<!--        <div th:text="${userTo.address}"></div>-->
+        <div th:text="${userTo.address}"></div>
         <div th:text="'Nr tel. ' + ${userTo.phone}"></div>
     </div>
     <div th:text="'Data: ' + ${packages.date}"></div>
@@ -30,7 +30,6 @@
 </div>
 <div class="info-edit">
     <a th:href="@{/edit/{id}(id=${packages.id})}" th:if="${isLogged}" class="edit-icon"></a>
-    <a href="/add" th:if="${isLogged}" class="add-icon"></a>
 </div>
 </body>
 </html>

@@ -28,12 +28,38 @@ public class UserServiceImpl implements IUserService {
     public void isUserInDB(User user) {
         List<User> userList = this.hibernateUserDAO.getUserByAddress(user.getAddress());
         if(userList == null){
-            this.hibernateUserDAO.persistUser(user);
+            System.out.println("zapisanie nowego usera");
+            //TODO
+            //this.hibernateUserDAO.persistUser(user);
         }
         for(User currentUser : userList){
-            if(currentUser.equals(user)){
+            if(currentUser.getName().equals(user.getName()) &&
+                    currentUser.getLastName().equals(user.getLastName()) &&
+                    currentUser.getPhone().equals(user.getPhone())){
+                System.out.println("User jest juz w DB");
+                return;
             }
         }
-        this.hibernateUserDAO.persistUser(user);
+        System.out.println("zapisanie nowego usera");
+        //TODO
+        //this.hibernateUserDAO.persistUser(user);
+    }
+
+
+    @Override
+    public User isUserInDBByName(User user) {
+        List<User> userList = this.hibernateUserDAO.getUserByName(user.getName(), user.getLastName());
+        if(userList == null){
+            System.out.println("zapisanie nowego usera" + user);
+            return this.hibernateUserDAO.persistUser(user);
+        }
+        for(User currentUser : userList){
+            if(currentUser.getAddress().equals(user.getAddress())){
+                System.out.println("User jest juz w DB" + currentUser);
+                return currentUser;
+            }
+        }
+        System.out.println("zapisanie nowego usera" + user);
+        return this.hibernateUserDAO.persistUser(user);
     }
 }

@@ -38,7 +38,7 @@ public class HibernateUserDAOImpl implements IHibernateUserDAO {
     }
 
     @Override
-    public void persistUser(User user) {
+    public User persistUser(User user) {
         Session session = sessionFactory.openSession();
         Transaction tx = null;
         try{
@@ -51,6 +51,7 @@ public class HibernateUserDAOImpl implements IHibernateUserDAO {
             }
         }finally {
             session.close();
+            return user;
         }
     }
 
@@ -63,5 +64,34 @@ public class HibernateUserDAOImpl implements IHibernateUserDAO {
 
         session.close();
         return result;
+    }
+
+    @Override
+    public List<User> getUserByName(String name, String lastName) {
+        Session session = this.sessionFactory.openSession();
+        Query<User> query = session.createQuery("FROM pl.edu.wszib.przesylki.model.User WHERE name = :name AND lastName = :lastName");
+        query.setParameter("name", name);
+        query.setParameter("lastName", lastName);
+        List<User> result = query.getResultList();
+
+        session.close();
+        return result;
+    }
+
+    @Override
+    public void addUserToPackage(User user) {
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();
+            session.update(user);
+            tx.commit();
+        }catch(Exception e){
+            if(tx != null){
+                tx.rollback();
+            }
+        }finally {
+            session.close();
+        }
     }
 }

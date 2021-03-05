@@ -12,24 +12,24 @@
 <div th:replace="fragments.html :: menu"></div>
 
 <form method="post" class="box-form">
-    <input type="text" placeholder="Status" th:field="*{packages.status}">
+    <!--<input type="text" placeholder="Status" th:field="*{packages.status}">
 
     <div class="from-box">
         <input type="text" placeholder="Nadawca (imie)" th:field="*{userFrom.name}">
         <input type="text" placeholder="Nadawca (nazwisko)" th:field="*{userFrom.lastName}">
         <input type="text" placeholder="Nadawca (adres)" th:field="*{userFrom.address}">
         <input type="text" placeholder="Nadawca (nr tel)" th:field="*{userFrom.phone}">
-    </div>
+    </div>-->
 
-    <!--<div class="to-box">
+    <div class="to-box">
         <input type="text" placeholder="Odbiorca (imie)" th:field="*{userTo.name}">
         <input type="text" placeholder="Odbiorca (nazwisko)" th:field="*{userTo.lastName}">
         <input type="text" placeholder="Odbiorca (adres)" th:field="*{userTo.address}">
         <input type="text" placeholder="Odbiorca (nr tel)" th:field="*{userTo.phone}">
-    </div>-->
+    </div>
 
-    <input type="text" placeholder="Data" th:field="*{packages.date}">
-    <input type="text" placeholder="Kod" th:field="*{packages.code}">
+    <!--<input type="text" placeholder="Data" th:field="*{packages.date}">
+    <input type="text" placeholder="Kod" th:field="*{packages.code}">-->
     <input type="submit" value="Zapisz">
 </form>
 </body>

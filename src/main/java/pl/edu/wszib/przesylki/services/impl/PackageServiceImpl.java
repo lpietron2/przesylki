@@ -40,14 +40,14 @@ public class PackageServiceImpl implements IPackageService {
     }
 
     @Override
-    public void addPackage(Package packages, User userFrom, User userTo) {
-        this.userService.isUserInDB(userFrom);
-        this.userService.isUserInDB(userTo);
+    public void addPackage(Package packages) {
+        this.hibernatePackageDAO.addPackage(packages);
+    }
 
-        System.out.println(userFrom.toString());
-        System.out.println(userTo.toString());
-
-        //this.hibernatePackageDAO.addPackage(packages);
+    @Override
+    public void addUserToPackage(User user) {
+        User authUser = this.userService.isUserInDBByName(user);
+        authUser.getId();
     }
 
     @Override

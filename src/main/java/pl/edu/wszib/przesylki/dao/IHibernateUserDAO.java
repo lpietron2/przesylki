@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface IHibernateUserDAO {
     User getUserById(int id);
-    void persistUser(User user);
+    User persistUser(User user);
     List<User> getUserByAddress(String address);
+    List<User> getUserByName(String name, String lastName);
+    void addUserToPackage(User user);
 }
