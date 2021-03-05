@@ -13,9 +13,26 @@ body{
     color: black;
     font-size: 40px;
 }
+.add-button{
+    text-decoration: none;
+    margin-right: 40px;
+    margin-left: 40px;
+    text-font: 25px;
+}
 .logout-button{
     text-font: 25px;
 }
+
+.menu-button:hover{
+    color: rgba(191, 45, 59, 0.73);
+}
+.add-button:hover{
+    color: rgba(191, 45, 59, 0.73);
+}
+.logout-button:hover{
+    color: rgba(191, 45, 59, 0.73);
+}
+
 
 .box-form{
     width: 400px;

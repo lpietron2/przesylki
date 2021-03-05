@@ -10,8 +10,9 @@
 <img src="/logo.png" id="logo" th:fragment="logo">
 
 <div id="menu" th:fragment="menu">
-    <a href="/main">Strona Glowna</a>
-    <a href="/logout" th:if="${isLogged}" class="logout-button">Wyloguj</a>
+    <a href="/main" style="text-decoration: none; color: #3a3a3b" class="menu-button" >Strona Glowna</a>
+    <a href="/add" style="text-decoration: none; color: #3a3a3b" th:if="${isLogged}" class="add-button">Dodaj</a>
+    <a href="/logout" style="text-decoration: none; color: #3a3a3b" th:if="${isLogged}" class="logout-button">Wyloguj</a>
 </div>
 </body>
 </html>

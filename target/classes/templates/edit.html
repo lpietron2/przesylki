@@ -13,11 +13,12 @@
 
 <form method="post" class="box-form">
     <input type="text" placeholder="${packages.status}" th:field="*{packages.status}">
-    <!--<input type="text" placeholder="${packages.status}" th:field="*{packages.code}" disabled>
-    <input type="text" placeholder="${packages.status}" th:field="*{packages.sendFrom}" disabled>
-    <input type="text" placeholder="${packages.status}" th:field="*{packages.sendTo}" disabled>
-    <input type="text" placeholder="${packages.status}" th:field="*{packages.date}" disabled>-->
-
+    <!--<select>
+        <option th:each="status : ${T(pl.edu.wszib.przesylki.model.Status).values()}"
+                th:value="${status}"
+                th:text="${status}">
+        </option>
+    </select>-->
     <input type="submit" value="Zapisz">
 </form>
 </body>
