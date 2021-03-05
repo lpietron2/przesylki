@@ -10,4 +10,5 @@ public interface IHibernatePackageDAO {
     Package getPackageByCode(String code);
     void editPackage(Package packages);
     void addPackage(Package packages);
+    void updatePackageWithUserFrom(int sendFrom);
 }

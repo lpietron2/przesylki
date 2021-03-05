@@ -1,6 +1,7 @@
 package pl.edu.wszib.przesylki.controllers;
 
 
+import net.bytebuddy.asm.Advice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +11,7 @@ import pl.edu.wszib.przesylki.model.UserAdmin;
 import pl.edu.wszib.przesylki.services.IPackageService;
 import pl.edu.wszib.przesylki.model.Package;
 import pl.edu.wszib.przesylki.services.IUserAdminService;
+import pl.edu.wszib.przesylki.services.IUserService;
 import pl.edu.wszib.przesylki.session.SessionObject;
 
 
@@ -25,6 +27,9 @@ public class AdminController {
 
     @Autowired
     IUserAdminService userAdminService;
+
+    @Autowired
+    IUserService userService;
 
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
@@ -72,8 +77,10 @@ public class AdminController {
 
         System.out.println("userFrom: " + userFrom);
         this.packageService.addPackage(packages);
+        this.packageService.addUserFromToPackage(userFrom, packages);
         System.out.println("packege w add1 post: " + packages);
 
+        //return "redirect:/main";
         return "redirect:/addUserTo/" + packages.getId();
     }
 
@@ -83,25 +90,24 @@ public class AdminController {
         if(!this.sessionObject.isLogged()){
             return "redirect:/main";
         }
-        Package packages = this.packageService.getPackageById(id);
-        System.out.println("paczka z add2 get: " + packages);
-        model.addAttribute("packages", packages);
+
         model.addAttribute("userTo", new User());
         model.addAttribute("isLogged", this.sessionObject.isLogged());
         return "/addUserTo";
     }
 
     @RequestMapping(value = "/addUserTo/{id}", method = RequestMethod.POST)
-    public String add2(@ModelAttribute Package packages, @ModelAttribute User userTo){
+    public String add2(@PathVariable int id, @ModelAttribute User userTo){
         if(!this.sessionObject.isLogged()){
             return "redirect:/main";
         }
+        Package packages = this.packageService.getPackageById(id);
+        System.out.println("Paczka z 2 add: " + packages);
+        System.out.println("userTo: " + userTo);
+        this.packageService.addUserToToPackage(userTo, packages);
 
-        System.out.println("Paczka z 2 add: " + packages.toString());
-        System.out.println("userTo: " + userTo.toString());
 
-        //this.packageService.addPackage(packages, userFrom, userTo);
-        return "redirect:/main";
+        return "redirect:/showpackage/" + packages.getCode();
     }
 
 

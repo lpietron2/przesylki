@@ -41,13 +41,23 @@ public class PackageServiceImpl implements IPackageService {
 
     @Override
     public void addPackage(Package packages) {
+        packages.setCode(codeGenerate());
         this.hibernatePackageDAO.addPackage(packages);
     }
 
     @Override
-    public void addUserToPackage(User user) {
+    public void addUserFromToPackage(User user, Package packages) {
         User authUser = this.userService.isUserInDBByName(user);
-        authUser.getId();
+
+        packages.setSendFrom(authUser.getId());
+        this.hibernatePackageDAO.editPackage(packages);
+        //this.hibernatePackageDAO.updatePackageWithUserFrom(id od authUser czyli sendFrom);
+    }
+    public void addUserToToPackage(User user, Package packages){
+        User authUser = this.userService.isUserInDBByName(user);
+
+        packages.setSendTo(authUser.getId());
+        this.hibernatePackageDAO.editPackage(packages);
     }
 
     @Override

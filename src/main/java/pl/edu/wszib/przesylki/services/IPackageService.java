@@ -12,6 +12,7 @@ public interface IPackageService {
     Package getPackageByCode(String code);
     void editPackageInfo(Package packages);
     void addPackage(Package packages);
-    void addUserToPackage(User user);
+    void addUserFromToPackage(User user, Package packages);
+    void addUserToToPackage(User user, Package packages);
     String codeGenerate();
 }

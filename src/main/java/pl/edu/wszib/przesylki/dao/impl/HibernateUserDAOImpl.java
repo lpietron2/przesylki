@@ -78,20 +78,5 @@ public class HibernateUserDAOImpl implements IHibernateUserDAO {
         return result;
     }
 
-    @Override
-    public void addUserToPackage(User user) {
-        Session session = sessionFactory.openSession();
-        Transaction tx = null;
-        try{
-            tx = session.beginTransaction();
-            session.update(user);
-            tx.commit();
-        }catch(Exception e){
-            if(tx != null){
-                tx.rollback();
-            }
-        }finally {
-            session.close();
-        }
-    }
+
 }

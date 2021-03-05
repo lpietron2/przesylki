@@ -9,5 +9,5 @@ public interface IHibernateUserDAO {
     User persistUser(User user);
     List<User> getUserByAddress(String address);
     List<User> getUserByName(String name, String lastName);
-    void addUserToPackage(User user);
+
 }

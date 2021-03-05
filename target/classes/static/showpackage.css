@@ -23,6 +23,7 @@
     height: 50px;
     display: inline-block;
     background-size: contain;
-    margin-bottom: 50px;
+    margin: auto;
+    margin-top: 25px;
 
 }

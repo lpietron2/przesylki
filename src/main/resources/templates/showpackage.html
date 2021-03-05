@@ -13,6 +13,7 @@
 
 <div class="info-package">
     <div th:text="'Status: ' + ${packages.status}"></div>
+
     <div class="from-box">
         <div class="from-text">Nadawca: </div>
         <div th:text="${userFrom.name} + ' ' + ${userFrom.lastName}"></div>
@@ -27,9 +28,10 @@
     </div>
     <div th:text="'Data: ' + ${packages.date}"></div>
     <div th:text="'Unikalny kod: ' + ${packages.code}"></div>
-</div>
-<div class="info-edit">
+
     <a th:href="@{/edit/{id}(id=${packages.id})}" th:if="${isLogged}" class="edit-icon"></a>
 </div>
+
+
 </body>
 </html>

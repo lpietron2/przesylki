@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import pl.edu.wszib.przesylki.dao.IHibernatePackageDAO;
 import pl.edu.wszib.przesylki.model.Package;
+import pl.edu.wszib.przesylki.model.User;
 
 import javax.persistence.NoResultException;
+import java.sql.Connection;
 import java.util.List;
 
 @Repository
@@ -17,6 +19,9 @@ public class HibernatePackageDAOImpl implements IHibernatePackageDAO {
 
     @Autowired
     SessionFactory sessionFactory;
+
+    @Autowired
+    Connection connection;
 
 
     @Override
@@ -94,5 +99,11 @@ public class HibernatePackageDAOImpl implements IHibernatePackageDAO {
         }finally {
             session.close();
         }
+    }
+
+
+    @Override
+    public void updatePackageWithUserFrom(int sendFrom) {
+        //String sql = "UPDATE tpackage SET sendFrom = ? WHERE";
     }
 }

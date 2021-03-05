@@ -13,7 +13,7 @@ import java.sql.SQLException;
 @Configuration
 @ComponentScan("pl.edu.wszib")
 public class AppConfiguration {
-    /*@Bean
+    @Bean
     public Connection connection(){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -24,7 +24,7 @@ public class AppConfiguration {
             e.printStackTrace();
         }
         return null;
-    }*/
+    }
 
     @Bean
     public SessionFactory sessionFactory(){
