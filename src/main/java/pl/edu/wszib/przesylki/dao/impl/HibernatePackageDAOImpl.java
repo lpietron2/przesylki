@@ -20,8 +20,6 @@ public class HibernatePackageDAOImpl implements IHibernatePackageDAO {
     @Autowired
     SessionFactory sessionFactory;
 
-    @Autowired
-    Connection connection;
 
 
     @Override

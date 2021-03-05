@@ -42,13 +42,20 @@ public class PackageServiceImpl implements IPackageService {
     @Override
     public void addPackage(Package packages) {
         String codeTest = "";
+        boolean temp = false;
         List<Package> packageList = getAllPackages();
-        codeTest = codeGenerate();
-        for(Package currentPackage : packageList){
+        do {
+            temp = false;
+            codeTest = codeGenerate();
+            for (Package currentPackage : packageList) {
+                if (currentPackage.getCode().equals(codeTest)) {
+                    temp = true;
+                }
+            }
+        }while(temp);
 
-        }
 
-        packages.setCode(codeGenerate());
+        packages.setCode(codeTest);
         this.hibernatePackageDAO.addPackage(packages);
     }
 
@@ -77,4 +84,6 @@ public class PackageServiceImpl implements IPackageService {
         }
         return letter;
     }
+
+
 }

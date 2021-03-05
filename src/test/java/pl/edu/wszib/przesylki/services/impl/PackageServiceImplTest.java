@@ -14,6 +14,7 @@ import pl.edu.wszib.przesylki.dao.IHibernatePackageDAO;
 import pl.edu.wszib.przesylki.dao.IHibernateUserAdminDAO;
 import pl.edu.wszib.przesylki.dao.IHibernateUserDAO;
 import pl.edu.wszib.przesylki.model.Package;
+import pl.edu.wszib.przesylki.model.User;
 import pl.edu.wszib.przesylki.services.IPackageService;
 import pl.edu.wszib.przesylki.services.IUserAdminService;
 import pl.edu.wszib.przesylki.services.IUserService;
@@ -57,4 +58,29 @@ public class PackageServiceImplTest {
 
         Assert.assertNotNull(packagesList);
     }
+
+    @Test
+    public void addUserFromToPackageTest(){
+        User user = new User(10, "Bartlomiej", "Augustyn", "ul. Akacjowa 1", "123433252");
+        Package packages = new Package(1, 1, 2, "20-02-2020", Package.Status.NADANY, "KKOO");
+
+        Mockito.when(this.userService.isUserInDBByName(user)).thenReturn(user);
+
+        this.packageService.addUserFromToPackage(user, packages);
+
+        Assert.assertEquals(user.getId(), packages.getSendFrom());
+
+    }
+    @Test
+    public void addUserToToPackageTest(){
+        User user = new User(10, "Bartlomiej", "Augustyn", "ul. Akacjowa 1", "123433252");
+        Package packages = new Package(1, 1, 2, "20-02-2020", Package.Status.NADANY, "KKOO");
+
+        Mockito.when(this.userService.isUserInDBByName(user)).thenReturn(user);
+
+        this.packageService.addUserToToPackage(user, packages);
+
+        Assert.assertEquals(user.getId(), packages.getSendTo());
+    }
+
 }
