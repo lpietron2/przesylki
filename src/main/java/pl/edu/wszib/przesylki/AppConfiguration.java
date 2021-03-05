@@ -13,8 +13,8 @@ import java.sql.SQLException;
 @Configuration
 @ComponentScan("pl.edu.wszib")
 public class AppConfiguration {
-    @Bean
-    public Connection connection(){
+    //@Bean
+    /*public Connection connection(){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             return DriverManager.getConnection("jdbc:mysql://localhost:3306/przesylki?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&characterEncoding=utf8", "root","");
@@ -24,7 +24,7 @@ public class AppConfiguration {
             e.printStackTrace();
         }
         return null;
-    }
+    }*/
 
     @Bean
     public SessionFactory sessionFactory(){

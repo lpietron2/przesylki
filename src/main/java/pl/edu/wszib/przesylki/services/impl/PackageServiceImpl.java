@@ -41,6 +41,13 @@ public class PackageServiceImpl implements IPackageService {
 
     @Override
     public void addPackage(Package packages) {
+        String codeTest = "";
+        List<Package> packageList = getAllPackages();
+        codeTest = codeGenerate();
+        for(Package currentPackage : packageList){
+
+        }
+
         packages.setCode(codeGenerate());
         this.hibernatePackageDAO.addPackage(packages);
     }

@@ -13,7 +13,7 @@
 
 <form method="post" class="box-form">
 <!--    <input type="text" placeholder="Status" th:field="*{packages.status}">-->
-    <select th:field="*{packages.status}">
+    <select th:field="*{packages.status}" class="select-box">
         <option th:each="status : ${T(pl.edu.wszib.przesylki.model.Package.Status).values()}"
                 th:value="${status}"
                 th:text="${status}">

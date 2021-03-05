@@ -6,3 +6,10 @@
     margin-top: 20px;
     margin-bottom: 20px;
 }
+.select-box{
+    width: 320px;
+    height: 30px;
+    margin: auto 40px;
+    font-size: 15px;
+    text-align: center;
+}
