@@ -4,21 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Edytowanie</title>
-    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/edit.css">
     <link rel="stylesheet" href="/commons.css">
 </head>
 <body>
 <div th:replace="fragments.html :: logo"></div>
 <div th:replace="fragments.html :: menu"></div>
 
-<form method="post" class="box-form" >
-    <input type="text" placeholder="${packages.status}" th:field="*{packages.status}">
-    <!--<select>
-        <option th:each="status : ${T(pl.edu.wszib.przesylki.model.Status).values()}"
+<form method="post" class="box-form">
+
+    <select th:field="*{packages.status}" class="select-box">
+        <option th:each="status : ${T(pl.edu.wszib.przesylki.model.Package.Status).values()}"
                 th:value="${status}"
                 th:text="${status}">
         </option>
-    </select>-->
+    </select>
     <input type="submit" value="Zapisz">
 </form>
 </body>

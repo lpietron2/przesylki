@@ -12,7 +12,13 @@
 <div th:replace="fragments.html :: menu"></div>
 
 <form method="post" class="box-form">
-    <input type="text" placeholder="Status" th:field="*{packages.status}">
+<!--    <input type="text" placeholder="Status" th:field="*{packages.status}">-->
+    <select th:field="*{packages.status}">
+        <option th:each="status : ${T(pl.edu.wszib.przesylki.model.Package.Status).values()}"
+                th:value="${status}"
+                th:text="${status}">
+        </option>
+    </select>
 
     <div class="from-box">
         <input type="text" placeholder="Nadawca (imie)" th:field="*{userFrom.name}">
